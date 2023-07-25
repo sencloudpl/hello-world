@@ -6,6 +6,9 @@ on:
 jobs:
   update-dev-infra:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment: [development]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -16,6 +19,9 @@ jobs:
           docker build -t terragrunt:local --build-arg TF_VERSION=${tf_version} --build-arg TG_VERSION=${tg_version} .
   update-staging-infra:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment: [staging]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -26,6 +32,9 @@ jobs:
           docker build -t terragrunt:local --build-arg TF_VERSION=${tf_version} --build-arg TG_VERSION=${tg_version} .
   update-production-infra:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment: [production]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
