@@ -1,0 +1,12 @@
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  update-dev-infra:
+    runs-on: ubuntu-latest
+  update-staging-infra:
+    runs-on: ubuntu-latest
+  update-production-infra:
+    runs-on: ubuntu-latest
